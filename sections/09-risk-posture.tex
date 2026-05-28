@@ -1,0 +1,100 @@
+\section{Risk Posture}
+
+The Alliance's risks fall into four categories: \emph{regulatory},
+\emph{commercial}, \emph{IP}, and \emph{governance}. Each is enumerated
+here with its operative mitigation.
+
+\subsection{Regulatory risk}
+
+\textbf{Risk.} The Alliance operates across multiple regulated regimes
+(US securities, US banking, UK consumer banking, EU MiCA, IOM, Luxembourg
+CSSF, Singapore MAS, UAE VARA, Horn-of-Africa Shariah-compliant). A
+material adverse regulatory action in any single jurisdiction creates
+both direct revenue loss for the affected member and reputational risk
+to the Alliance's other members in adjacent jurisdictions.
+
+\textbf{Mitigation.} (i) Per-jurisdiction partner stack such that the
+Alliance does not depend on any single license; (ii) compliance posture
+documented per jurisdiction (the \texttt{jurisdictions/} subtree at
+\texttt{docs.lux.financial}) with clear delineation of which member /
+partner holds which license; (iii) SOC 2 sub-service organisation model
+so that compliance-control inheritance is documented and members do not
+silently rely on each other; (iv) clean-room engineering protocol so
+that no member's regulatory posture is contaminated by another member's
+issues.
+
+\subsection{Commercial risk}
+
+\textbf{Risk.} A Phase-One GameFi launch underperforms; the Phase-Two
+super-app conversion is below target; a Phase-Three acquisition is mis-
+priced or fails to integrate; the partner ecosystem's commercial terms
+deteriorate.
+
+\textbf{Mitigation.} (i) Three-phase build with explicit gating metrics
+between phases (\S 3.3, \S 4.4); Phase Two does not launch until Phase
+One clears its metrics. (ii) Layered capital architecture (\S 6) so that
+one member's underperformance does not starve the whole network.
+(iii) Layer-1 reserve capital (\S 6.1) covers member-stabilisation
+distribution under documented criteria. (iv) Partner ecosystem
+diversified across multiple counterparties per jurisdiction so that any
+single partner's deterioration is not existential.
+
+\subsection{IP risk}
+
+\textbf{Risk.} A Phase-One or Phase-Three substrate user operates
+without an executed license. A competitor builds parallel technology that
+reads on the Alliance's patent claims. A court invalidates a key Alliance
+patent. The clean-room protocol is breached on a critical module.
+
+\textbf{Mitigation.} (i) Active patent prosecution (\S 7.5); (ii)
+deliberate IP defensive posture (\S 7.4) with partnership-first BATNA;
+(iii) the Independent Implementation Clean-Room Engineering Protocol
+(\texttt{INDEPENDENT-IMPLEMENTATION-CLEAN-ROOM-PROTOCOL.md}) enforced on
+every commit to substrate or substrate-extending modules; (iv) two-team
+discipline (Dirty Team produces specs from public sources only, under
+GC review; Clean Team writes implementation without exposure to
+third-party private materials); (v) annual external-counsel sign-off
+on the substrate's non-infringement-by-construction posture.
+
+\subsection{Governance risk}
+
+\textbf{Risk.} The coordination layer over-reaches into member
+operations and erodes member independence. Conversely, the coordination
+layer is too passive and members drift away from the Alliance's shared
+substrate / IP / brand. A material dispute between two members is not
+resolved cleanly and corrodes the broader network. The coordination
+layer becomes captured by a single member's interests.
+
+\textbf{Mitigation.} (i) Narrow coordination scope (\S 8.1, \S 8.3);
+(ii) explicit member rights and obligations (\S 8.2); (iii)
+dispute-resolution mechanism in the underlying Strategic Partnership
+Agreement (Delaware governing law, AAA Wilmington arbitration);
+(iv) independent director slate on the coordination layer's board;
+(v) annual coordination-layer audit by an independent firm
+(complementary to the Alliance's SOC 2 audit).
+
+\subsection{Macro and adjacent risks}
+
+\textbf{Crypto market cycle.} The Alliance's revenue is partially
+correlated to crypto market activity, particularly on the GameFi
+substrate (Phase One) and the super-app trading panel (Phase Two).
+Mitigation: revenue diversification across non-correlated panels
+(RWA, banking, identity, custody, regulated-securities trading); cash
+reserves sized to absorb at least an 18-month adverse cycle without
+member-stabilisation distribution.
+
+\textbf{Geopolitical risk.} Alliance member jurisdictions span US, EU,
+UK, IOM, Luxembourg, Singapore, UAE, and Horn of Africa. Geopolitical
+deterioration in any one region creates direct member risk.
+Mitigation: jurisdictional diversification (the same crisis rarely hits
+all of the eight regions simultaneously); per-jurisdiction operational
+isolation (KMS isolation, per-tenant data residency, no cross-region
+data joins absent member consent); the Alliance's IP and capital pool
+domiciled in the US parent under standard US legal protections.
+
+\textbf{Key-person risk.} The Alliance's substrate engineering team
+carries founder-level expertise that would be difficult to replace
+quickly. Mitigation: documented engineering processes; pair-development
+discipline; succession-planned key technical roles; insurance
+(key-person life + D\&O); the patent estate as a structural backstop
+even if individual personnel depart.

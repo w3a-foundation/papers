@@ -1,0 +1,88 @@
+\section{Phase One --- Consumer Economy through GameFi}
+
+\subsection{Why GameFi is the entry vector}
+
+Three properties make GameFi the right Phase-One surface for an alliance
+whose end-state is a financial super-app and a multi-vertical compounding
+network.
+
+\textbf{Regulatory geometry.} Gaming transactions are not securities,
+banking, or money transmission per se. They sit in a regulatory regime
+(consumer protection, anti-fraud, payment processing) that is materially
+easier to operate under in launch than a direct financial product. The
+Alliance can ship at scale on day one without queueing for financial
+licenses.
+
+\textbf{Transaction volume per user.} A live GameFi user generates
+hundreds to thousands of on-chain interactions per month --- microtransactions,
+NFT mints, marketplace trades, tournament entries, reward claims. This is
+two to three orders of magnitude more transaction throughput per user than
+a typical fintech or consumer financial product. High throughput
+\emph{validates the substrate}, \emph{stresses the operations posture},
+and \emph{generates protocol fees} from day one.
+
+\textbf{User-base acquisition economics.} Gaming user-acquisition costs
+are dominated by content, marketing, and live-ops rather than regulatory
+overhead. The fifteen-title slate (\S 2.2) brings its own user base on
+launch; the Alliance does not start from zero subscribers.
+
+\subsection{Mechanics of Phase One}
+
+The fifteen-title slate ships across mobile, web, and desktop targets.
+Each title is instrumented to:
+
+\begin{itemize}[leftmargin=2em,itemsep=0.1em]
+\item Use the W3A L2 as its transaction substrate (high-frequency
+microtransactions clear sub-second with finality on the L2; finality on
+the parent chain follows the standard rollup cadence).
+\item Issue and trade in-game assets as NFTs (ERC-721 / ERC-1155) and
+fungible in-game currency (LP-curated ERC-20 with constrained
+issuance schedule).
+\item Settle player payments through the partner stack: card and
+stablecoin payments via SF Private Pay on the US/CA side; UK / EU /
+APAC payments via the regional partners; remittance corridors via SSB
+and M-Pesa for the diaspora flows.
+\item Provide a unified player wallet with optional self-custody
+(WalletConnect) or custodial (W3A MPC + KMS) modes. Default is custodial
+for the casual user; self-custody is a single-click opt-in for the
+sovereignty-minded user.
+\item Publish a single-sign-on identity (Hanzo IAM tenant per game studio
+under the standard \texttt{<org>-<app>} convention) that carries
+forward into Phase Two without re-onboarding.
+\end{itemize}
+
+\subsection{What success looks like at end of Phase One}
+
+Phase-One success is measured against transaction throughput, monthly
+active wallets, gross revenue from in-game economies, and qualified-user
+conversion eligibility for Phase Two. Concrete targets:
+
+\begin{itemize}[leftmargin=2em,itemsep=0.1em]
+\item \textbf{500,000 monthly active wallets} across the fifteen titles
+within twelve months of launch.
+\item \textbf{One million on-chain transactions per day} (sustained
+30-day average) by month nine.
+\item \textbf{\$25 million annualised gross revenue} from in-game
+economies and marketplace fees by end of month twelve.
+\item \textbf{200,000 wallets KYC-eligible} for Phase-Two conversion at
+end of month twelve (i.e.\ users who have passed a baseline accredited
+or non-accredited KYC and are eligible to transact in the financial
+super-app of \S 4 without an onboarding gap).
+\end{itemize}
+
+These are the metrics that justify the Phase-Two unlock. If the Alliance
+clears each of them within the targeted window, the conversion to the
+financial super-app of \S 4 proceeds; if any is missed, the Phase-Two
+ramp is held until the gating metric is met. The discipline is to
+\emph{not skip phases} in pursuit of headline metrics that don't carry
+the user base forward.
+
+\subsection{Substrate-validation as a parallel outcome}
+
+A second outcome of Phase One, independent of the consumer-economy
+metrics, is \emph{substrate validation at scale}. Running one million
+on-chain transactions per day sustained against the W3A L2 produces an
+operational and security record that no synthetic benchmark or testnet
+campaign can match. That record is itself a Phase-Three asset: it is the
+substrate proof point that institutional Phase-Three counterparties
+diligence before signing.

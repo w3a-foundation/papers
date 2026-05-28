@@ -1,0 +1,111 @@
+\section{IP Architecture}
+
+The Alliance's intellectual-property strategy is the single most
+load-bearing element of the compounding thesis. Without enforceable IP,
+the substrate is a commodity and the Alliance is a coordination club
+without a moat. With enforceable IP --- properly tiered, properly
+licensed, and properly defended --- the substrate becomes a perpetual
+royalty stream, member admission becomes a controlled gate, and every
+Phase-Three acquisition inherits an immediate competitive moat against
+its category incumbents.
+
+\subsection{Three-tier licensing}
+
+The substrate ships under the three-tier model summarised in \S 2.1 and
+documented in detail at \texttt{LICENSING-POLICY.md} in the Alliance
+legal estate:
+
+\textbf{Tier 1 (BSD-3-Clause).} Commodity infrastructure --- node,
+codec, database, p2p, SDK, CLI, API. Free for any commercial use,
+including by Alliance non-members and by competitors. This tier exists
+to maximise the substrate's surface area in the developer ecosystem.
+
+\textbf{Tier 2 (W3A License v1.2, LEL).} Source-available,
+patent-protected. Commercial rights granted only to ``Authorized
+Networks'' --- the W3A Primary Network, W3A testnets and devnets, and
+L1/L2/L3 chains descending from the W3A Primary Network. The
+``Descending Chain'' criterion is the operative gate: an Alliance
+member chain is automatically authorised; a non-member chain is not.
+
+\textbf{Tier 3 (W3A Research License with Patent Reservation v1.0,
+LRL--PR).} Research-only license. Commercial use requires a separate
+executed Strategic Commercial License Agreement (SCLA) with W3A
+Industries Inc. This tier covers the highest-value primitives where the
+Alliance retains direct gate control over commercial use.
+
+A fourth tier --- the closed-source \texttt{\textasciitilde/work/luxcpp/}
+private GPU tree --- is licensed only to the Alliance's top settlement
+counterparties. It is not source-available in any form.
+
+\subsection{Bifurcated licensor posture (W3A Foundation\ + Hanzo, Inc.)}
+
+The patent estate is bifurcated between two licensors. Lux Industries
+Inc.\ licenses the Lux-branded modules (consensus, post-quantum
+cryptography, threshold + MPC, FHE, DEX matching, EVM derivatives, VM
+substrate, cross-chain messaging). Hanzo, Inc.\ licenses the AI / agent
+runtime / MCP / ACI / defense substrate (the AI side of the platform
+that the W3A side consumes upstream).
+
+The bifurcation matters for Alliance economics. A Phase-Three
+acquisition that takes W3A-substrate IP needs a W3A license. A
+Phase-Three acquisition that takes AI / agent IP needs a Hanzo license.
+A member that takes both needs both. Two licensors means two streams of
+licensing revenue, two layers of defensive posture, and two distinct
+SCLA forms --- but always coordinated under the Alliance coordination
+layer (\S 8).
+
+\subsection{Member admission as a licensing event}
+
+Every Alliance member's admission is structured as an IP-licensing event:
+
+\begin{itemize}[leftmargin=2em,itemsep=0.1em]
+\item Member executes the LEL covering the Tier-2 modules its product
+uses.
+\item Member executes an SCLA covering any Tier-3 LRL--PR modules.
+\item Where the member is taking Hanzo-source modules, member executes
+the parallel Hanzo license.
+\item Member's chain (or its rollup on the W3A L2) is registered as an
+``Authorized Network'' under the LEL Descending Chain criterion.
+\item Member's brand integration is registered in the Alliance brand
+registry (consistent with the brand-via-env-override discipline).
+\item Member's compliance and clean-room obligations are accepted under
+the relevant policy documents.
+\end{itemize}
+
+Member admission is therefore not just a commercial choice --- it is a
+contracted, documented IP-licensing event that materially aligns the
+member with the Alliance's compounding economics.
+
+\subsection{Defensive posture}
+
+Where the substrate is used without an executed license, the Alliance
+enforces. The licensing terms are deliberately written to provide a
+clean cause of action for trade-secret misappropriation, copyright
+infringement, patent infringement, breach of fiduciary duty (where
+applicable), and unjust enrichment, with statutory and exemplary
+damages where the conduct is willful.
+
+This defensive posture is not aggressive litigiousness --- the Alliance's
+strong preference is always for partnership-first resolution under the
+SCLA framework rather than litigation. But the credibility of the
+defensive posture is what makes the partnership offer compelling: a
+counterparty who knows litigation is an available alternative will
+accept the partnership terms that a counterparty without that knowledge
+would walk away from. The defensive posture is the BATNA that makes the
+partnership outcome workable.
+
+\subsection{Patent prosecution discipline}
+
+The patent estate is actively managed. Eleven (11) inventions are filed
+today; fifty-one (51) are filable and should be perfected to non-
+provisional within the standard 12-month window of any invention in
+active commercial use; twenty-one (21) defensive publications protect
+prior art for novel concepts that are not patent-worthy on their own;
+seven (7) trade-secret records carry the highest-value primitives that
+are kept out of the patent system entirely.
+
+The discipline is to file early and prosecute aggressively in the US
+and key European jurisdictions, with PCT extensions where the
+commercial market warrants. Outside counsel review is annual at minimum;
+the patent docket is treated as a first-class asset on the Alliance
+balance sheet.

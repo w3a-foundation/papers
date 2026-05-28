@@ -1,0 +1,169 @@
+\section{The Great Crossover --- Market Sizing and Liquidity Migration}
+
+The economic case for the Alliance presumes that a meaningful fraction
+of the world's financial assets, payment flows, and trading volume
+migrates onto decentralized rails over the next 5--15 years. This
+section quantifies the addressable market and the rate of capital
+migration that the Alliance is positioned to capture.
+
+\subsection{Global financial asset base --- the denominator}
+
+The addressable market is not measured in billions. It is measured in
+hundreds of trillions of dollars of financial assets globally:
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\textwidth}{X r r}
+\toprule
+\textbf{Asset category} & \textbf{Global AUM} & \textbf{2025 baseline}\\
+\midrule
+Total global financial assets & \$486T & BIS / FSB / Allianz aggregate\\
+Listed equity (all major markets) & \$115T & WFE \\
+Fixed income (sovereign + corporate + securitized) & \$130T & ICMA / SIFMA \\
+Bank deposits (global, all currencies) & \$95T & BIS \\
+Real estate (residential + commercial) & \$326T & Savills \\
+Commodities (oil + gas + metals + softs) & \$5--8T & WGC + LBMA + LME \\
+Insurance + pensions AUM & \$80T & OECD pension stats \\
+\midrule
+Total payment flow (annual, global) & \$2,000T+ & SWIFT + ACH + RTGS \\
+Cross-border payments (annual) & \$190T & McKinsey + BIS CPMI \\
+Foreign exchange (BIS triennial, daily turnover) & \$7.5T/day & BIS \\
+\midrule
+Crypto market cap (2026 baseline) & \$2--3T & CMC \\
+Stablecoin float (2026 baseline) & \$250B & DefiLlama \\
+Tokenized RWA float (2026 baseline) & \$15B & rwa.xyz / Galaxy \\
+\bottomrule
+\end{tabularx}
+\caption{Global financial-asset and payment-flow denominators. The
+crypto + tokenized-RWA base is roughly 0.5--0.6\% of the total
+financial-asset base today; the migration trajectory below estimates the
+addressable size in the 5--15-year horizon.}
+\end{table}
+
+The number to internalise is not the crypto float; it is the gap
+between the crypto float and the global denominator. A 1\% migration of
+the global financial-asset base onto decentralized rails is \$4--5T of
+new on-chain TVL. A 10\% migration is \$40--50T --- larger than the
+combined balance sheets of the four largest US banks. A 25\% migration
+is \$100T+ and is structurally comparable to the position-shift caused
+by the introduction of the index-fund and the ETF over the prior 40
+years.
+
+\subsection{The migration vectors --- where the flow comes from}
+
+Capital does not migrate all at once or uniformly. It migrates through
+specific vectors with specific catalysts. The Alliance is positioned to
+capture flow through each:
+
+\textbf{(1) Tokenized Treasuries / money-market funds.} The fastest-
+moving vector today. Tokenized US Treasury exposure (BUIDL, USDY,
+similar) grew from sub-\$1B in early 2024 to \$10B+ by mid-2025 and
+on a trajectory to \$50--100B+ by 2027. The Alliance captures this
+flow through (a) the Creatrust / Luxembourg tokenization rail for
+non-US-resident demand, (b) NCPS-backed US-eligible tokenized
+Treasury issuance, (c) the FHE-confidential primitives for
+institutional allocators who require NAV privacy.
+
+\textbf{(2) Stablecoin replacement of correspondent banking.}
+Stablecoin float grew from \$3B in 2020 to \$250B+ in 2026. The next
+inflection is the migration of cross-border B2B payment flow from
+SWIFT correspondent banking (\$190T/yr in cross-border flow, of which
+SWIFT carries the bulk) to stablecoin rails. Even a 1\% migration is
+\$1.9T/yr of incremental stablecoin transaction volume; the
+Alliance's member SSB diaspora-corridor and AvaTrade FX-routing
+posture is positioned to capture the diaspora and FX-arbitrage
+slices.
+
+\textbf{(3) Tokenized real estate + commodities + private equity.}
+The \$326T global real-estate base is the largest single asset class
+in dollar terms; its on-chain tokenization rate today is sub-0.01\%.
+The structural barriers (legal-title perfection, fractional ownership
+mechanics, secondary-market liquidity) are exactly the categories the
+Alliance's substrate addresses through ERC-3643 / T-REX + W3A's
+captable + transfer-agent stack.
+
+\textbf{(4) Retail brokerage migration.} Equity-trading volume on
+retail-facing brokerage platforms (Robinhood, eToro, Webull, Public,
+similar) is approaching parity with the institutional flow in some
+geographies. The Alliance's GameFi-converted Phase-Two super-app
+(\S 8) captures this slice through the same Alliance-member NCPS BD
++ TA + ATS posture used for the institutional flow, with the same
+fee economics and the same FHE-privacy guarantees.
+
+\textbf{(5) Asset-management substrate migration.} The Aladdin
+incumbent powers a substantial fraction of global asset-management
+analytics. As FHE-coprocessor cost falls (the 8$\times$H100 NAV
+benchmarks of \S 5 are a 2026 baseline; the cost trajectory is
+quasi-linear with GPU-capability improvements), the structural
+advantage of FHE-grade analytics over access-control privacy becomes
+overwhelming. The Alliance's \texttt{aivm} A-Chain attestation
+surface and FHE precompile family is positioned to displace
+incumbent-analytics-substrate cost-of-capital line items at the
+margin first, then categorically.
+
+\textbf{(6) Sovereign + CBDC interoperability.} Multiple jurisdictions
+are pursuing central-bank digital currency programmes (mBridge, the
+ECB Digital Euro, the BoE Digital Pound, the SARB Project Khokha).
+Each requires interoperability with regulated DeFi counterparties for
+the wholesale and cross-border CBDC lanes. The Alliance's posture
+across IOM, Luxembourg, Singapore, UAE, and Horn-of-Africa gives it a
+defensible position as an early integration counterparty for whichever
+of these programmes moves first.
+
+\subsection{The 5-year trajectory --- what we think happens}
+
+We do not predict an exact migration pace; we observe that the
+trajectory is steepening. The base case for 2030:
+
+\begin{itemize}[leftmargin=2em,itemsep=0.1em]
+\item Stablecoin float reaches \$2--3T (8--12$\times$ today).
+\item Tokenized-RWA float reaches \$1--3T (60--200$\times$ today).
+\item On-chain settlement of cross-border payments captures 5--15\% of
+the \$190T/yr flow ($\$10$--$\$30T/yr$ of incremental on-chain
+settlement volume).
+\item DeFi TVL reaches \$300--600B (3--6$\times$ today; constrained by
+the on-chain TVL ceiling rather than by capability).
+\item Crypto + tokenized assets as fraction of global financial assets
+moves from $\sim$0.6\% today to 2--5\%, depending on the rate of
+tokenized-RWA expansion (\$10--25T of crypto-and-tokenized AUM).
+\end{itemize}
+
+\textbf{The Great Crossover thesis is that the migration is monotone
+and accelerating, not cyclical}. The migration accelerates when (a) the
+regulatory baseline clarifies further (MiCA already live, SEC ETF /
+custody rule trajectory, UK FCA roadmap, MAS / VARA crypto-asset
+service-provider regime), (b) tokenized-RWA legal frameworks pass
+specific perfection-of-title and on-chain-transferability tests in
+US, UK, EU, and Asia courts (in process today), and (c) on-chain
+infrastructure matures to the throughput, latency, and FHE-privacy
+posture the Alliance's substrate already delivers.
+
+\subsection{What the Alliance captures}
+
+The Alliance does not need to capture 100\% of any of these vectors to
+clear the \$100B--\$1T-class enterprise-value target of \S 1.3. The
+arithmetic of capture:
+
+\begin{itemize}[leftmargin=2em,itemsep=0.1em]
+\item \textbf{1\% of the 2030 stablecoin float} ($\$2$--$\$3T$
+$\rightarrow$ \$20--30B of float on the Alliance substrate at any one
+time, with a multiple of that in annual flow).
+\item \textbf{1\% of tokenized-RWA float} (\$10--30B AUM on the
+Alliance substrate).
+\item \textbf{0.5\% of on-chain cross-border settlement} (\$50--150B
+annual flow through Alliance-routed corridors).
+\item \textbf{2\% of DeFi TVL} (\$6--\$12B in Alliance-LP-
+substrate-protected pools).
+\item \textbf{0.1\% of the global asset-management substrate}
+($\sim$\$0.5T of AUM on the FHE-confidential analytics surface).
+\end{itemize}
+
+At Alliance-blended fee economics (low single-digit bps on float-and-
+flow, mid-double-digit bps on FHE-confidential analytics-as-a-service,
+LP-and-validator fee economics structured per the substrate's reward
+formula), \textbf{the aggregate fee revenue at this share is on the
+order of \$3--8 billion/year}, before any contribution from the
+\$141B/yr-incumbent-cost-extraction story of \S 4. Even at fractional
+capture rates, the Alliance is positioned for the enterprise-value
+target. Higher capture rates compound proportionally.

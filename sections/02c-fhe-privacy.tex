@@ -1,0 +1,183 @@
+\section{FHE, Privacy, and the Confidentiality Advantage}
+
+Privacy is not an aesthetic preference of the W3A; it is a
+\emph{measurable economic advantage} over the incumbent
+financial-services stack. The largest asset managers in the world lose
+5--15 basis points per portfolio-rebalance event to information leakage
+through public exchange order flow, intraday NAV iNAV publication, and
+ETF authorised-participant arbitrage. On a \$100B quarterly rebalance
+that loss is \textbf{\$50--150 million per event}; annualised across
+four rebalances per year, \textbf{\$200--600 million per manager per
+year} of structural extraction.
+
+Web3 Alliance's FHE precompile architecture (the LP-308 family of
+homomorphic-encryption primitives at the EVM substrate layer) computes
+the entire portfolio-rebalance lifecycle --- NAV calculation, target
+weights, deltas, child orders, AP creation / redemption, dark-pool
+matching --- on \texttt{euint64} ciphertexts. The only information that
+leaves the substrate is the threshold-decrypted per-share NAV at the
+scheduled publication moment. The categorical front-running surface
+that incumbent dark pools (IEX, Liquidnet, BIDS) attempt to mitigate
+through access-control privacy --- defeated by any insider or any
+subpoena --- is, on Web3 Alliance, eliminated by cryptographic
+construction.
+
+\subsection{Confidential NAV computation}
+
+The canonical FHE primitive on W3A is \emph{confidential NAV}.
+Holdings stay as \texttt{euint64} ciphertexts under the network
+threshold-FHE public key. Prices arrive as independently-encrypted
+oracle ciphertexts so the issuer cannot manipulate inputs to the
+multiplication. NAV is computed homomorphically:
+
+\[
+\texttt{enc(NAV)} = \texttt{scalarDiv}\left(\sum_i \texttt{mul}(\texttt{enc}(h_i), \texttt{enc}(p_i)), S\right)
+\]
+
+where shares-outstanding $S$ is the only public scalar. Only the
+per-share NAV is threshold-decrypted (e.g. 67-of-100 validator
+committee). Under RLWE with $\geq 2$ positions, the AUM-to-position-
+vector decomposition is information-theoretically hidden; even with the
+final NAV revealed, the underlying holdings are not recoverable.
+
+\textbf{Measured benchmarks} (LP-308 reference implementation +
+8$\times$H100 coprocessor):
+
+\begin{center}
+\small
+\begin{tabular}{rrr}
+\toprule
+Holdings & Gas cost & Wall-clock time \\
+\midrule
+50 & 14.25M & $\approx$12 s \\
+100 & 28M & $\approx$22 s \\
+250 & 69.25M & $\approx$55 s \\
+500 & --- & $<$30 s (on 8$\times$H100) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Per-holding cost is approximately \textbf{215K gas for the
+\texttt{mul} + \texttt{add}} pair, plus a one-time \textbf{500K gas
+scalar-divide}. The final threshold-decrypt is approximately 10K gas
+and completes in 2--5 seconds.
+
+At any plausible gas-price denomination, the marginal cost of computing
+NAV homomorphically is \textbf{seven-to-nine orders of magnitude less}
+than the bps-per-event extraction that information leakage would
+otherwise represent for the manager. The economics are not close.
+
+\subsection{Encrypted dark-pool matching}
+
+Adjacent to confidential NAV is the \emph{encrypted dark-pool match}.
+Orders enter as ciphertexts; the matching predicate (price-time priority
++ minimum-execution-size + party-ID anti-self-match) runs on the
+ciphertexts directly; only the matched-pair-emission event clears in
+plaintext. 100-order dark-pool matching clears in $<30$ seconds on the
+8$\times$H100 coprocessor; the substrate's amortised cost per matched
+pair is dominated by the network-fee economics, not the cryptography.
+
+The categorical difference from IEX / Liquidnet: traditional dark pools
+rely on \emph{access-control privacy}. The pool sees the orders.
+Insiders, subpoenas, and any successful breach defeats the privacy
+guarantee. W3A's matching predicate runs cryptographically; the
+substrate operator cannot see the orders even with full validator
+collusion below the threshold (e.g.\ 66-of-100). Subpoena response
+requires the threshold committee to coordinate a key-reveal --- a
+process that is itself logged immutably on the substrate.
+
+\subsection{Sealed-bid AP creation / redemption auctions}
+
+Authorised-participant creation and redemption of ETF baskets is the
+mechanism by which an ETF tracks its NAV. The AP submits a creation
+order; the issuer fills with a basket; the AP supplies cash + accepts
+shares (or the reverse on redemption). The auction is currently visible
+to other APs in real time, which produces a front-running surface in
+the basket constituents.
+
+On W3A, the AP-auction surface runs as a \emph{sealed-bid encrypted
+auction}: every AP's bid arrives as an FHE ciphertext, the issuer's
+basket composition arrives as an FHE ciphertext, the matching algorithm
+runs on the ciphertexts, and only the cleared creation / redemption
+event becomes plaintext at scheduled-decrypt. The 5--15 bps per
+rebalance leakage that incumbents pay is removed by construction.
+
+\subsection{Confidential diversification + concentration checks}
+
+SEC Rule 35d-1 (Names Rule) requires an investment company holding
+itself out as investing in a particular type of asset to maintain 80\%
+of its assets in that type. The 5\% / 10\% diversification limits under
+Subchapter M of the Internal Revenue Code constrain the concentration
+of any single holding. Both checks today run in plaintext --- which
+means the issuer's compliance officer (and the issuer's regulator,
+through inspection) sees the underlying holdings every cycle.
+
+W3A supports both checks as \emph{FHE-on-encrypted-state}: the
+substrate computes diversification + concentration checks against the
+encrypted-holdings ciphertexts and produces a single
+threshold-decrypted compliance bit (passes / fails) per cycle. The
+regulator continues to receive supervision-grade attestation; the
+issuer's competitors and the public market do not see the underlying
+positions.
+
+\subsection{Encrypted shareholder voting}
+
+Voting on shareholder proposals --- proxies, board-member nominations,
+recapitalisation events, M\&A approvals --- today runs through a
+combination of Broadridge tabulation, custodian forwarding, and
+beneficial-owner identification. The privacy guarantee is operational,
+not cryptographic; the tabulator sees every vote.
+
+W3A's primitive runs vote-on-ciphertext: each beneficial owner casts a
+threshold-encrypted vote; the tabulation is a homomorphic sum; only
+the threshold-decrypted final tally is revealed. Voter-by-voter
+identification at tabulation is impossible by construction; legal
+process to identify a specific voter requires the threshold committee
+to coordinate a per-voter key-reveal (logged immutably).
+
+\subsection{Tax-loss harvesting on encrypted cost basis}
+
+Tax-loss harvesting --- the systematic sale of holdings at a loss to
+realise tax benefits while replacing with substantially-similar
+positions to maintain market exposure --- is a multi-billion-dollar
+service today (Wealthfront, Schwab Intelligent Portfolios, Aperio
+which BlackRock acquired in 2020). The service today requires the
+custodian to see the underlying cost basis and the current price.
+
+W3A's primitive runs the harvest decision on encrypted cost-basis
+ciphertexts; only the harvest-or-not decision and the volume traded
+becomes plaintext at execution. The customer's underlying cost-basis
+record is never visible to the substrate operator, the custodian, or
+the executing broker.
+
+\subsection{The aggregate FHE-economic value}
+
+Across the seven primitive categories (confidential NAV, encrypted
+dark-pool, sealed-bid AP auction, diversification + concentration
+checks, encrypted voting, tax-loss harvesting on encrypted basis,
+plus dark-pool-equivalent client-order routing for institutional flow),
+the aggregate value-capture for a manager operating on W3A's substrate
+is:
+
+\begin{itemize}[leftmargin=2em,itemsep=0.1em]
+\item \textbf{\$200M--\$600M/year per manager} in eliminated rebalance
+front-running (5--15 bps on \$100B quarterly rebalance, four
+rebalances/year).
+\item Materially-reduced dark-pool leakage on institutional flow
+(industry-wide estimate \$2--5B/year of slippage on US institutional
+block flow).
+\item Pricing pressure relief on tax-loss-harvesting fee structures
+(currently 20--50 bps on managed assets).
+\item Categorically-superior regulator-grade compliance attestation
+without information disclosure.
+\item A privacy posture that legal-process-and-subpoena counterparties
+of incumbents cannot defeat by construction; substrate operators are
+explicitly unable to comply with single-key subpoenas.
+\end{itemize}
+
+This is not a marginal feature improvement over incumbent privacy
+arrangements. It is a categorical \emph{cryptographic} guarantee that no
+incumbent financial-services substrate offers. The privacy moat
+compounds with the cost-stack moat (\S 4) and the post-quantum security
+moat (\S 1.3); each independently is defensible; together they are
+structural.
