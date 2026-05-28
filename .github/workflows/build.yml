@@ -1,0 +1,51 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+    paths:
+      - '**/*.tex'
+      - '**/*.sty'
+      - '**/*.bib'
+      - '.github/workflows/build.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends texlive-full
+
+      - name: Build PDF (two passes for refs/TOC)
+        run: |
+          pdflatex -interaction=nonstopmode -halt-on-error Web3_Alliance.tex
+          pdflatex -interaction=nonstopmode -halt-on-error Web3_Alliance.tex
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Web3_Alliance
+          path: Web3_Alliance.pdf
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: Attach to release on tag
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@72f2c25fcb47643c292f7107632f7a47c1df5cd8 # v2.3.2
+        with:
+          files: Web3_Alliance.pdf
+          fail_on_unmatched_files: true
